@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from db import init_db, add_task, get_tasks, delete_task
+from db import init_db, add_task, get_tasks, delete_task, toggle_task
 
 app = Flask(__name__)
 init_db()
@@ -13,6 +13,11 @@ def index():
 def add():
     task = request.form['task']
     add_task(task)
+    return redirect(url_for('index'))
+
+@app.route('/toggle/<int:task_id>', methods=['POST'])
+def toggle(task_id):
+    toggle_task(task_id)
     return redirect(url_for('index'))
 
 @app.route('/delete/<int:task_id>')
