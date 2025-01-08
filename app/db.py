@@ -10,7 +10,7 @@ def init_db():
 
 def add_task(task):
     tasks = get_tasks()
-    new_task = {"id": len(tasks) + 1, "task": task}
+    new_task = {"id": len(tasks) + 1, "task": task, "completed": False}
     tasks.append(new_task)
     _save_tasks(tasks)
 
@@ -24,6 +24,13 @@ def get_tasks():
 def delete_task(task_id):
     tasks = get_tasks()
     tasks = [task for task in tasks if task["id"] != task_id]
+    _save_tasks(tasks)
+
+def toggle_task(task_id):
+    tasks = get_tasks()
+    for task in tasks:
+        if task["id"] == task_id:
+            task["completed"] = not task["completed"]
     _save_tasks(tasks)
 
 def _save_tasks(tasks):

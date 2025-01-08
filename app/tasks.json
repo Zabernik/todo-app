@@ -1,6 +1,12 @@
 [
     {
         "id": 1,
-        "task": "1"
+        "task": "Chleb",
+        "completed": false
+    },
+    {
+        "id": 2,
+        "task": "mleko",
+        "completed": true
     }
 ]
