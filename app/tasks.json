@@ -1,12 +1,17 @@
 [
     {
-        "id": 1,
-        "task": "Chleb",
+        "id": 2,
+        "task": "mleko",
         "completed": false
     },
     {
         "id": 2,
-        "task": "mleko",
+        "task": "d",
+        "completed": true
+    },
+    {
+        "id": 3,
+        "task": "s",
         "completed": true
     }
 ]

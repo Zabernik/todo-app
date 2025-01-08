@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
         <h1>Lista Zadań</h1>
         <form method="POST" action="/add">
-            <input type="text" name="task" placeholder="Dodaj zadanie" required>
+            <input type="text" name="task" placeholder="Dodaj nowe zadanie" required>
             <button type="submit">Dodaj</button>
         </form>
         <ul>
@@ -22,7 +23,7 @@
                     <span class="{% if task['completed'] %}completed{% endif %}">
                         {{ task['task'] }}
                     </span>
-                    <a href="/delete/{{ task['id'] }}">Usuń</a>
+                    <a href="/delete/{{ task['id'] }}" title="Usuń zadanie">✖</a>
                 </li>
             {% endfor %}
         </ul>
