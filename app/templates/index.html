@@ -4,23 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
         <h1>Lista Zadań</h1>
         <form method="POST" action="/add">
-            <input type="text" name="task" placeholder="Dodaj zadanie" required>
+            <input type="text" name="task" placeholder="Dodaj nowe zadanie" required>
+            <select name="priority" required>
+                <option value="low">Niski</option>
+                <option value="medium">Średni</option>
+                <option value="high">Wysoki</option>
+            </select>
             <button type="submit">Dodaj</button>
         </form>
         <ul>
             {% for task in tasks %}
                 <li>
-                    {{ task['task'] }}
-                    <a href="/delete/{{ task['id'] }}">Usuń</a>
+                    <form method="POST" action="/toggle/{{ task['id'] }}" style="display: inline;">
+                        <input type="checkbox" onchange="this.form.submit()" {% if task['completed'] %}checked{% endif %}>
+                    </form>
+                    <span class="{% if task['completed'] %}completed{% endif %}">
+                        {{ task['task'] }}
+                        <span class="priority {{ task['priority'] }}">
+                            [{{ {'low': 'Niski', 'medium': 'Średni', 'high': 'Wysoki'}[task['priority']] }} Priorytet]
+                        </span>
+                    </span>
+                    <a href="/delete/{{ task['id'] }}">✖</a>
                 </li>
             {% endfor %}
-        </ul>
+        </ul>        
     </div>
 </body>
 </html>
