@@ -8,9 +8,10 @@ def init_db():
         with open(DB_FILE, 'w') as f:
             json.dump([], f)
 
-def add_task(task):
+def add_task(task, priority):
     tasks = get_tasks()
-    new_task = {"id": len(tasks) + 1, "task": task, "completed": False}
+    new_id = _generate_id(tasks)
+    new_task = {"id": new_id, "task": task, "completed": False, "priority": priority}
     tasks.append(new_task)
     _save_tasks(tasks)
 
@@ -36,3 +37,8 @@ def toggle_task(task_id):
 def _save_tasks(tasks):
     with open(DB_FILE, 'w') as f:
         json.dump(tasks, f, indent=4)
+
+def _generate_id(tasks):
+    if not tasks:
+        return 1
+    return max(task["id"] for task in tasks) + 1

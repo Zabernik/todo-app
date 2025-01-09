@@ -12,6 +12,11 @@
         <h1>Lista Zadań</h1>
         <form method="POST" action="/add">
             <input type="text" name="task" placeholder="Dodaj nowe zadanie" required>
+            <select name="priority" required>
+                <option value="low">Niski</option>
+                <option value="medium">Średni</option>
+                <option value="high">Wysoki</option>
+            </select>
             <button type="submit">Dodaj</button>
         </form>
         <ul>
@@ -22,11 +27,14 @@
                     </form>
                     <span class="{% if task['completed'] %}completed{% endif %}">
                         {{ task['task'] }}
+                        <span class="priority {{ task['priority'] }}">
+                            [{{ {'low': 'Niski', 'medium': 'Średni', 'high': 'Wysoki'}[task['priority']] }} Priorytet]
+                        </span>
                     </span>
-                    <a href="/delete/{{ task['id'] }}" title="Usuń zadanie">✖</a>
+                    <a href="/delete/{{ task['id'] }}">✖</a>
                 </li>
             {% endfor %}
-        </ul>
+        </ul>        
     </div>
 </body>
 </html>
