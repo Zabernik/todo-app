@@ -14,6 +14,7 @@ def add_task(task, priority):
     new_task = {"id": new_id, "task": task, "completed": False, "priority": priority}
     tasks.append(new_task)
     _save_tasks(tasks)
+    #test 
 
 def get_tasks():
     try:
