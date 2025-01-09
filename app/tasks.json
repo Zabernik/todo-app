@@ -1,14 +1,1 @@
-[
-    {
-        "id": 2,
-        "task": "Chlyb",
-        "completed": false,
-        "priority": "low"
-    },
-    {
-        "id": 3,
-        "task": "Kupka",
-        "completed": false,
-        "priority": "high"
-    }
-]
+[]
