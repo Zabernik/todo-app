@@ -42,3 +42,10 @@ def _generate_id(tasks):
     if not tasks:
         return 1
     return max(task["id"] for task in tasks) + 1
+
+def update_task(task_id, new_task):
+    tasks = get_tasks()
+    for task in tasks:
+        if task["id"] == task_id:
+            task["task"] = new_task
+    _save_tasks(tasks)

@@ -31,7 +31,8 @@
                             [{{ {'low': 'Niski', 'medium': 'Średni', 'high': 'Wysoki'}[task['priority']] }} Priorytet]
                         </span>
                     </span>
-                    <a href="/delete/{{ task['id'] }}">✖</a>
+                    <a href="/edit/{{ task['id'] }}">Edytuj</a>
+                    <a href="/delete/{{ task['id'] }}">Usuń</a>
                 </li>
             {% endfor %}
         </ul>        
