@@ -1,17 +1,14 @@
 [
     {
         "id": 2,
-        "task": "mleko",
-        "completed": false
-    },
-    {
-        "id": 2,
-        "task": "d",
-        "completed": true
+        "task": "Chlyb",
+        "completed": false,
+        "priority": "low"
     },
     {
         "id": 3,
-        "task": "s",
-        "completed": true
+        "task": "Kupka",
+        "completed": false,
+        "priority": "high"
     }
 ]

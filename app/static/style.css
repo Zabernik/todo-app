@@ -121,3 +121,24 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+.priority {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-left: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: white;
+}
+
+.priority.low {
+    background-color: #4caf50; /* Zielony */
+}
+
+.priority.medium {
+    background-color: #ff9800; /* Pomarańczowy */
+}
+
+.priority.high {
+    background-color: #f44336; /* Czerwony */
+}
