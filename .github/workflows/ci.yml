@@ -35,11 +35,8 @@ jobs:
     - name: Set up Docker
       uses: docker/setup-buildx-action@v2
 
-    - name: Install Trivy
-      run: curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh
-
     - name: Build Docker image for scanning
       run: docker build -t todo-app .
 
     - name: Scan Docker image with Trivy
-      run: ./trivy image --exit-code 0 --severity HIGH,CRITICAL todo-app
+      run: docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy image --severity HIGH,CRITICAL todo-app
